@@ -15,4 +15,24 @@ class PhotoCreate(CreateView):
     fields = ['text', 'image']
     template_name_suffix = '_create'
     success_url = '/'
+
+class PhotoUpdate(UpdateView):
+    model = Photo
+    fields = ['text', 'image']
+    template_name_suffix = '_update'
+    success_url = '/'
+
+class PhotoDelete(DeleteView):
+    model = Photo
+    success_url = '/'
+    template_name_suffix = '_delete'
+
+class PhotoDetail(DetailView):
+    model = Photo
+    success_url = '/'
+    template_name_suffix = '_detail'
+    
+class PhotoMyList(ListView):
+    model = Photo
+    
      
