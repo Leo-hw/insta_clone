@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.generic.base import View
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
@@ -34,5 +35,15 @@ class PhotoDetail(DetailView):
     
 class PhotoMyList(ListView):
     model = Photo
-    
-     
+
+class PhotoLike(View):
+    pass
+
+class PhotoFavorite(View):
+    pass
+
+class PhotoLikeList(ListView):
+    pass
+
+class PhotoFavoriteList(ListView):
+    pass
