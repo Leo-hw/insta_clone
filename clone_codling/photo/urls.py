@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 
+app_name = "photo"
+
 urlpatterns = [
     path('', PhotoList.as_view(), name='index'),
     path('create/', PhotoCreate.as_view(), name ='create'),
@@ -19,6 +21,10 @@ urlpatterns = [
 
     # view liked post and favorite 
     path('like/', PhotoLikeList.as_view(), name = 'like_list'),
-    path('favorite/', PhotoFavoriteList.as_view(), name = 'like_list'),
+    path('favorite/', PhotoFavoriteList.as_view(), name = 'favorite_list'),
 
 ]
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

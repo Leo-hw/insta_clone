@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 
 {% block title %} create {% endblock %}
-{% block content %}
-<div>
 
-</div>
+{% block content %}
+    <div class="row">
+        <div class='col'></div>
+            <div class="col-12 col-xl-8 col-md-8">
+            <div class="alert alert-primary" role="alert">
+                Please fill out all the blank 
+            </div>
+            <form action='' method = "post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{form.as_p}}
+                <input type="submit" value="Upload" class = "btn btn-primary">
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
 {% endblock %}
