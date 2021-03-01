@@ -14,14 +14,14 @@
 
                     <!-- updated beyond-->
 
-                    
+
                         <h5 class = "list-group list-group-flush">{{object.author}}</h5>
                         <p class = "card-text">{{object.text}}</p>
                 </div>
 
                 <ul class = "list-group list-group-flush">
                     <li class = "list-group-item">
-                        <a href = "{% url 'photo:like' object.id %}" class = "float-left btn-like {%if user in object.like.all %} active {% endif %}"> like</a>
+                        <a href = "{% url 'photo:like' object.id %}" class = "float-left btn-like {%if user in object.like.all %} active {% endif %}">like</a>
                         {% if object.like.all.count %}                
                         <span class = "float-left">
                             {{object.like.all.count}}
@@ -40,11 +40,28 @@
                     </li>
                 </ul>
                 <div class = "card-body">
+                    <!-- added this part for reply -->
+                    <a href ="{% url 'photo:detail' object.id %}" class = "card-link"> reply </a>
+
                     <a href ="{% url 'photo:update' object.id %}" class = "card-link"> update </a>
                     <a href ="{% url 'photo:delete' object.id %}" class = "card-link"> delete </a>
                 </div>
             </div>
-            <div class = "col"></div>
+            {% endfor %}
+        </div>
+
+        <div class = "col">
+        <!-- my profile and a link for my story -->
+            {% load static %}
+            <div class = "card" style="">
+                <img src = "{% static 'images/sample.jpg' %}" class ="card-img-top">
+                <div class = "card-body">
+                    <h5 class = "card-title">admin</h5>
+                    <p class = "card-text"> Check your story </p>
+                    <a href = "{% url 'photo:mylist' %}" class = "btn btn-primary"> go to your story </a>
+                </div>
+            </div>
+        </div>
                 
     </div>
 {% endblock %}
