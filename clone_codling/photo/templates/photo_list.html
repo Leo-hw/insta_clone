@@ -1,8 +1,50 @@
 {% extends 'base.html' %}
 
-{% block title %} create {% endblock %}
+{% block title %} detail {% endblock %}
 {% block content %}
-<div>
+    <div class="row">
+        <div class = "col"></div>
+        <div class = "col-5 ">
+            {% for object in object_list %}
+            
+                <div class = "card">
+                    <div class = "card-header">
+                        {{object.author}}
+                    </div>
 
-</div>
+                    <!-- updated beyond-->
+
+                    
+                        <h5 class = "list-group list-group-flush">{{object.author}}</h5>
+                        <p class = "card-text">{{object.text}}</p>
+                </div>
+
+                <ul class = "list-group list-group-flush">
+                    <li class = "list-group-item">
+                        <a href = "{% url 'photo:like' object.id %}" class = "float-left btn-like {%if user in object.like.all %} active {% endif %}"> like</a>
+                        {% if object.like.all.count %}                
+                        <span class = "float-left">
+                            {{object.like.all.count}}
+                        </span>
+                        {% endif %}
+                        <a href = "{% url 'photo:favorite' object.id %}" class = "float-right btn-favorite {% if user in object.favorite.all %} active {% endif %}">favorite</a>  
+                    </li>
+                    <li class = "list-group-item"> posted date: {{object.created}} </li>
+                    <li class = "list-group-item">
+                        
+                        <!-- load disqus module for reply -->
+                        {% load disqus_tags %}
+                        <div class = "card-body">
+                            {% disqus_show_comments %}
+                        </div>
+                    </li>
+                </ul>
+                <div class = "card-body">
+                    <a href ="{% url 'photo:update' object.id %}" class = "card-link"> update </a>
+                    <a href ="{% url 'photo:delete' object.id %}" class = "card-link"> delete </a>
+                </div>
+            </div>
+            <div class = "col"></div>
+                
+    </div>
 {% endblock %}
