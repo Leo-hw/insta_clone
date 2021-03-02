@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %} create {% endblock %}
+{% block title %} update {% endblock %}
 {% block content %}
-<div>
+<div class="row">
+    <div class = "col"></div>
+        <form action = "" method = "post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type = "submit" value = "Update">
+        </form>
+    <div class="col"></div>
 
 </div>
 {% endblock %}
