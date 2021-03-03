@@ -1,9 +1,25 @@
 from django.shortcuts import render
-
+from django.contrib.auth.models import User
 # Create your views here.
 
 def signup(request):
-    pass
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+        print(username, password, password2)
 
-def login(request):
-    pass
+        #create user object
+        user = User()
+        user.username = username
+        user.password = password
+        user.save()
+        return render(request, 'accounts/signup_complete.html')
+    else:
+        # return form object
+        context_values = {'form': 'this is form'}
+        return render(request, 'accounts/signup.html', context_values)
+
+        
+
+

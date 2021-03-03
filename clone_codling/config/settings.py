@@ -126,6 +126,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/res/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# for successfully log in
 LOGIN_REDIRECT = '/'
 
 DISQUS_WEBSITE_SHORTNAME = 'outstagram-2'
