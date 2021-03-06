@@ -9,4 +9,10 @@ class SignUpForm(forms.ModelForm):
         model = User
         # fill out fields with values for signup
         # can be added another field
-        fields = ['username', 'password', 'first_name', 'last_name', 'email',]
+        fields = ['username', 'password','Repeat_password', 'first_name', 'last_name', 'email',]
+
+    def clean_Repeat_password(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['Repeat_password']:
+            raise forms.ValidationError('Your password is not correct')
+        return cd['Repeat_password']
