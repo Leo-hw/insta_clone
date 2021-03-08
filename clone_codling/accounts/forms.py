@@ -4,7 +4,7 @@ from django import forms
 class SignUpForm(forms.ModelForm):
 
     password = forms.CharField(label = 'Password', widget=forms.PasswordInput)
-
+    Repeat_password = forms.CharField(label = 'Repeat_password', widget=forms.PasswordInput)
     class Meta:
         model = User
         # fill out fields with values for signup

@@ -1,4 +1,4 @@
-from clone_codling.accounts.forms import SignUpForm
+from .forms import SignUpForm
 from django.shortcuts import render
 from django.contrib.auth.models import User
 # Create your views here.
