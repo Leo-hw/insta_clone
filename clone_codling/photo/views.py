@@ -11,12 +11,22 @@ from django.contrib import messages
 class PhotoList(ListView):
     model = Photo
     template_name_suffix = '_list'
+    
 
 class PhotoCreate(CreateView):
     model = Photo
     fields = ['text', 'image']
     template_name_suffix = '_create'
     success_url = '/'
+    
+    def from_valid(self, form):
+        form.instance.author_id = self.request.user.id
+        print(form.instance.author_id)
+        if form.is_valid():
+            form.instance.save()
+            return redirect('/')
+        else:
+            return self.render_to_response({'form':form})
 
 class PhotoUpdate(UpdateView):
     model = Photo
@@ -24,10 +34,27 @@ class PhotoUpdate(UpdateView):
     template_name_suffix = '_update'
     success_url = '/'
 
+    def dispatch(self, request, *args, **kwargs):
+        object = self.get_object()
+        if object.author != request.user:
+            messages.warning(request, "You don't have an authorization for this work.")
+            return HttpResponseRedirect('/')
+        else:
+            return super(PhotoUpdate, self).dispatch(request, *args, **kwargs)
+
 class PhotoDelete(DeleteView):
     model = Photo
     success_url = '/'
     template_name_suffix = '_delete'
+
+    def dispatch(self, request, *args, **kwargs):
+        object = self.get_object()
+        if object.author != request.user:
+            messages.warning(request, "Don't have an authorization")
+            return HttpResponseRedirect('/')
+        else:
+            return super(PhotoDelete, self.dispatch(request, *args, **kwargs))
+
 
 class PhotoDetail(DetailView):
     model = Photo

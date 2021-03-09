@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from .views import *
+from .views import PhotoCreate, PhotoList, PhotoMyList, PhotoLike, PhotoFavorite, PhotoUpdate, PhotoDelete, PhotoDetail, PhotoLikeList, PhotoFavoriteList
 
 app_name = "photo"
 
 urlpatterns = [
-    path('', PhotoList.as_view(), name='index'),
+    path("", PhotoList.as_view(), name='index'),
     path('create/', PhotoCreate.as_view(), name ='create'),
 
     # view my post.

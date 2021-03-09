@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>{% block title %} base {% endblock %}</title>
+    
+    
 </head>
 
 <body>
@@ -54,7 +54,7 @@
     </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Dstagram</a>
+    <a class="navbar-brand" href="#">outstagram-2</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -67,16 +67,16 @@
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'photo:create' %}">사진 올리기<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'photo:create' %}"> Upload <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'accounts:logout' %}"> Logout<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'photo:like_list' %}">좋아요한 사진보기<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'photo:like_list' %}"> Like List <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'photo:favorite_list' %}">저장한 사진보기<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'photo:favorite_list' %}"> Favorite List <span class="sr-only">(current)</span></a>
             </li>
             {% else %}
             <li class="nav-item active">

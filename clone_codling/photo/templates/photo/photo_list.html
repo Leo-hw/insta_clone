@@ -1,20 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %} detail {% endblock %}
+{% block title %} list {% endblock %}
 {% block content %}
     <div class="row">
         <div class = "col"></div>
         <div class = "col-5 ">
-            {% for object in object_list %}
-            
+            {% for object in object_list %}          
                 <div class = "card">
                     <div class = "card-header">
                         {{object.author}}
                     </div>
 
                     <!-- updated beyond-->
-
-
                         <h5 class = "list-group list-group-flush">{{object.author}}</h5>
                         <p class = "card-text">{{object.text}}</p>
                 </div>
