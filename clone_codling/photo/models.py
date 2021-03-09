@@ -19,6 +19,7 @@ class Photo(models.Model):
     class Meta():
         ordering = ['-created']
 
+    # when views have a return value super, execute absolute_url
     def get_absolute_url(self):
         return reverse("photo:detail", args=[self.id])
     
